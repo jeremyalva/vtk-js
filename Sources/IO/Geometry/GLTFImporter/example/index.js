@@ -151,6 +151,7 @@ function animateScene(lastTime = 0) {
 }
 
 function ready() {
+  console.log('Modificado por MES.');
   console.log('Ready');
   // remove loading message
   loading.remove();
@@ -163,8 +164,20 @@ function ready() {
   renderer.resetCamera();
   renderWindow.render();
 
+  console.log('reader');
+  console.log(reader);
+
+  console.log('renderer');
+  console.log(renderer);
+
+  console.log('renderWindow');
+  console.log(renderWindow);
+
   // Play animations
   const animations = reader.getAnimations();
+
+  console.log('animations');
+  console.log(animations);
   if (animations.length > 0) {
     animations.forEach((animation, name) => {
       const option = document.createElement('option');
@@ -182,6 +195,10 @@ function ready() {
   }
 
   const cameras = reader.getCameras();
+
+  console.log('cameras');
+  console.log(cameras);
+
   cameras.forEach((camera, name) => {
     const option = document.createElement('option');
     option.value = name;
@@ -190,6 +207,10 @@ function ready() {
   });
 
   const scenes = reader.getScenes();
+
+  console.log('scenes');
+  console.log(scenes);
+
   if (scenes.length > 1) {
     scenesSelector.innerHTML = '';
     scenes.forEach((scene, index) => {
@@ -204,6 +225,9 @@ function ready() {
   }
 
   const variants = reader.getVariants();
+
+  console.log('variants');
+  console.log(variants);
   if (variants.length > 1) {
     variantsSelector.innerHTML = '';
     variants.forEach((variant, index) => {
@@ -221,6 +245,8 @@ function ready() {
 fetch(`${baseUrl}/${modelsFolder}/model-index.json`)
   .then((response) => response.json())
   .then((modelsJson) => {
+    console.log('modelsJson');
+    console.log(modelsJson);
     modelsJson.forEach((entry) => {
       if (entry.variants !== undefined && entry.name !== undefined) {
         const variants = [];
